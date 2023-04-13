@@ -1,0 +1,354 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3e012052-7367-4af5-82da-fd881056bcc2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ans-1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e2378dae-6b11-489f-b5bb-75870ca00b74",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "The mathematical formula for a linear SVM (Support Vector Machine) is:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5d06dd28-3e8c-4ece-8f5c-98bcd54071e1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f(x) = sign(w^T x + b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d959d307-456a-4754-a670-71a21ebbe3b7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "where:\n",
+    "\n",
+    "x is the input vector.\n",
+    "w is the weight vector.\n",
+    "b is the bias term.\n",
+    "^T denotes the transpose of the vector/matrix.\n",
+    "sign() is a function that returns -1 or 1, depending on the sign of the input.\n",
+    "The weight vector and bias term are learned during the training phase of the SVM. The goal of training a linear SVM is to find the optimal values of w and b that minimize the classification error while maximizing the margin between the two classes. The margin is the distance between the decision boundary (the hyperplane that separates the two classes) and the closest data points from each class."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d4cc9dbd-58a7-4ba2-aee3-036dcb6e1fc0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ans-2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f27b89b7-c486-495d-9b4e-425e84a82e0c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "The objective function of a linear SVM (Support Vector Machine) is to find the hyperplane that separates the two classes in the best way possible. The hyperplane is defined as the set of points where the decision function is equal to zero:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "355dc2d8-0c1c-4744-a122-64da7176324d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "w^T x + b = 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b8739e01-23aa-473a-a48a-e57547c5fc56",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "The objective of the SVM is to find the optimal values of w and b that minimize the classification error while maximizing the margin between the two classes. The margin is the distance between the decision boundary (the hyperplane that separates the two classes) and the closest data points from each class.\n",
+    "\n",
+    "The objective function of a linear SVM can be written as a constrained optimization problem:\n",
+    "    minimize: 1/2 ||w||^2\n",
+    "subject to: yi(w^T xi + b) >= 1, for all i\n",
+    "\n",
+    "where:\n",
+    "\n",
+    "||w|| is the Euclidean norm of the weight vector.\n",
+    "xi is the i-th input vector.\n",
+    "yi is the label of the i-th input vector (either -1 or 1).\n",
+    "The inequality constraint ensures that all data points are classified correctly with a margin of at least 1.\n",
+    "The objective function is a quadratic programming problem, which can be solved using various optimization algorithms. The solution to the optimization problem gives the optimal values of w and b that define the decision boundary of the SVM."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "58c447b1-bf41-4286-9cf6-56a081d77b2b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ans-3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ea293f50-1986-443f-8da1-6a33a235d966",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "The kernel trick is a technique used in Support Vector Machines (SVMs) to implicitly map the input data to a high-dimensional feature space without actually computing the coordinates of the data in that space. The kernel trick allows SVMs to efficiently learn nonlinear decision boundaries by transforming the data into a higher-dimensional space where a linear decision boundary can be used.\n",
+    "\n",
+    "The kernel trick is based on the observation that many machine learning algorithms, including SVMs, can be formulated in terms of dot products between data points. The idea is to replace the dot product between two data points with a kernel function that computes a similarity measure between the two data points in a high-dimensional feature space. The kernel function effectively maps the data points into a higher-dimensional space without actually computing the coordinates of the data points in that space.\n",
+    "\n",
+    "The most commonly used kernel functions in SVMs are:\n",
+    "\n",
+    "Linear kernel: K(x, y) = x^T y\n",
+    "Polynomial kernel: K(x, y) = (ax^T y + c)^d\n",
+    "Gaussian (RBF) kernel: K(x, y) = exp(-gamma ||x-y||^2)\n",
+    "where x and y are input data points, a, c, d, and gamma are hyperparameters of the kernel function.\n",
+    "\n",
+    "Using the kernel trick, the optimization problem of SVM can be rewritten as:\n",
+    "    \n",
+    "    minimize: 1/2 sum_i sum_j alpha_i alpha_j y_i y_j K(x_i, x_j) - sum_i alpha_i\n",
+    "subject to: 0 <= alpha_i <= C, for all i\n",
+    "            sum_i alpha_i y_i = 0\n",
+    "    \n",
+    "    where K(x_i, x_j) is the kernel function that computes the similarity between the i-th and j-th input vectors, and alpha_i are the Lagrange multipliers that determine the importance of each data point in defining the decision boundary.\n",
+    "\n",
+    "The kernel trick allows SVMs to efficiently learn nonlinear decision boundaries by implicitly transforming the data into a higher-dimensional space, without actually computing the coordinates of the data points in that space. This makes SVMs more powerful and flexible than traditional linear classifiers."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5407d9ae-d4c3-417e-b841-aa1e6bd8f338",
+   "metadata": {},
+   "source": [
+    "# Ans-4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "05b9c859-f0ab-4bdf-a526-b6cf22868ec8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Support vectors are the data points in a Support Vector Machine (SVM) that lie closest to the decision boundary (also known as the hyperplane) and play a crucial role in defining the decision boundary of the SVM. In other words, the support vectors are the critical data points that determine the position and orientation of the decision boundary in the feature space.\n",
+    "\n",
+    "During the training phase of an SVM, the algorithm identifies a set of support vectors that lie on the margin of the decision boundary, as well as those that are misclassified or lie within the margin. These support vectors are used to define the decision boundary of the SVM, and all other data points are ignored.\n",
+    "\n",
+    "For example, let's say we have a dataset of two-dimensional points that belong to two different classes: red dots and blue dots. We want to train an SVM to separate these two classes. The SVM will find the decision boundary (a hyperplane) that maximizes the margin between the two classes, while minimizing the classification error.\n",
+    "\n",
+    "In the figure below, we can see that the decision boundary of the SVM is defined by three support vectors: one red dot and two blue dots. These support vectors lie on the margin of the decision boundary and are critical in defining its position and orientation.\n",
+    "\n",
+    "svm-support-vectors-example\n",
+    "\n",
+    "The support vectors play a crucial role in the performance of the SVM. If we remove any of the support vectors, the decision boundary will shift, and the margin will be reduced. Therefore, the SVM is designed to identify the critical support vectors during the training phase and use them to define the decision boundary of the classifier.\n",
+    "\n",
+    "In summary, the support vectors are the key data points that define the decision boundary of the SVM and play a crucial role in the performance of the classifier."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a9b966b0-eec4-45c8-9c0c-8df2e70121f6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ans-5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "63404973-6a21-4a2a-b2eb-367d8a439060",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "graphs of hyperplanes, marginal planes, soft margins, and hard margins in SVM.\n",
+    "\n",
+    "Hyperplane:\n",
+    "In SVM, a hyperplane is a decision boundary that separates the input data into different classes. In a two-dimensional feature space, a hyperplane is a straight line, while in a three-dimensional feature space, a hyperplane is a plane.\n",
+    "\n",
+    "Here's an example of a hyperplane in a two-dimensional feature space that separates the blue dots from the red dots:\n",
+    "\n",
+    "svm-hyperplane-example\n",
+    "\n",
+    "The dashed line represents the hyperplane that separates the two classes. Any data point on the blue side of the hyperplane is classified as blue, while any data point on the red side of the hyperplane is classified as red.\n",
+    "\n",
+    "Marginal plane:\n",
+    "In SVM, a marginal plane is a parallel hyperplane that lies equidistant from the support vectors on either side. The distance between the marginal plane and the hyperplane is called the margin.\n",
+    "\n",
+    "Here's an example of a marginal plane in a two-dimensional feature space:\n",
+    "\n",
+    "svm-marginal-plane-example\n",
+    "\n",
+    "The dashed line represents the hyperplane that separates the two classes, while the two solid lines represent the marginal planes. The margin is the distance between the hyperplane and the marginal planes.\n",
+    "\n",
+    "Hard margin:\n",
+    "In SVM, a hard margin is a scenario where the SVM is trained to classify the data with a zero training error. This means that the SVM tries to find a hyperplane that perfectly separates the two classes without any misclassifications. A hard margin SVM only works when the data is linearly separable, which means that a hyperplane can perfectly separate the two classes.\n",
+    "\n",
+    "Here's an example of a hard margin SVM in a two-dimensional feature space:\n",
+    "\n",
+    "svm-hard-margin-example\n",
+    "\n",
+    "The dashed line represents the hyperplane that perfectly separates the two classes without any misclassifications.\n",
+    "\n",
+    "Soft margin:\n",
+    "In SVM, a soft margin is a scenario where the SVM is trained to classify the data with a small number of misclassifications. This means that the SVM allows some data points to be misclassified to achieve a better overall performance. A soft margin SVM works when the data is not perfectly linearly separable, which means that a hyperplane cannot perfectly separate the two classes.\n",
+    "\n",
+    "Here's an example of a soft margin SVM in a two-dimensional feature space:\n",
+    "\n",
+    "svm-soft-margin-example\n",
+    "\n",
+    "The dashed line represents the hyperplane that separates the two classes with a small number of misclassifications. The data points that lie inside the margin or on the wrong side of the hyperplane are called support vectors and are used to define the margin of the SVM.\n",
+    "\n",
+    "In summary, SVM is a powerful machine learning algorithm that uses hyperplanes, marginal planes, soft margins, and hard margins to classify input data into different classes. The choice of margin and the type of SVM depends on the problem at hand, the complexity of the data, and the desired performance of the algorithm."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e1f44ae4-2147-4e8b-875d-6182867f609a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ans-6"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8060b491-d018-4666-9a84-5ec823727cce",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "SVM using the Iris dataset from scikit-learn:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0f9f8376-eaa5-411a-a607-cbf56eca5b43",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sklearn.datasets import load_iris\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.svm import LinearSVC\n",
+    "from sklearn.metrics import accuracy_score\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "# Load the Iris dataset\n",
+    "iris = load_iris()\n",
+    "\n",
+    "# Split the dataset into a training set and a testing set\n",
+    "X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)\n",
+    "\n",
+    "# Train a linear SVM classifier on the training set\n",
+    "clf = LinearSVC(random_state=42)\n",
+    "clf.fit(X_train, y_train)\n",
+    "\n",
+    "# Predict the labels for the testing set\n",
+    "y_pred = clf.predict(X_test)\n",
+    "\n",
+    "# Compute the accuracy of the model on the testing set\n",
+    "accuracy = accuracy_score(y_test, y_pred)\n",
+    "print(\"Accuracy:\", accuracy)\n",
+    "\n",
+    "# Plot the decision boundaries of the trained model using two of the features\n",
+    "feature_names = iris.feature_names[:2] # Choose two features for plotting\n",
+    "x_min, x_max = X_train[:, 0].min() - 0.5, X_train[:, 0].max() + 0.5\n",
+    "y_min, y_max = X_train[:, 1].min() - 0.5, X_train[:, 1].max() + 0.5\n",
+    "xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02), np.arange(y_min, y_max, 0.02))\n",
+    "Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])\n",
+    "Z = Z.reshape(xx.shape)\n",
+    "plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)\n",
+    "plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=plt.cm.coolwarm)\n",
+    "plt.xlabel(feature_names[0])\n",
+    "plt.ylabel(feature_names[1])\n",
+    "plt.title(\"Decision boundaries of SVM classifier\")\n",
+    "plt.show()\n",
+    "\n",
+    "# Try different values of the regularization parameter and see how it affects the performance of the model\n",
+    "C_values = [0.01, 0.1, 1, 10, 100]\n",
+    "for C in C_values:\n",
+    "    clf = LinearSVC(C=C, random_state=42)\n",
+    "    clf.fit(X_train, y_train)\n",
+    "    y_pred = clf.predict(X_test)\n",
+    "    accuracy = accuracy_score(y_test, y_pred)\n",
+    "    print(\"C:\", C, \"Accuracy:\", accuracy)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c16211bf-65d5-4154-b972-ccdaf720d4c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "This code first loads the Iris dataset from scikit-learn and splits it into a training set and a testing set. It then trains a linear SVM classifier on the training set, predicts the labels for the testing set, and computes the accuracy of the model on the testing set.\n",
+    "\n",
+    "Next, it plots the decision boundaries of the trained model using two of the features. It chooses the first two features (sepal length and sepal width) for plotting and creates a meshgrid of points to represent the feature space. It then predicts the class of each point in the meshgrid and plots the decision boundaries as a contour plot.\n",
+    "\n",
+    "Finally, it tries different values of the regularization parameter (C) and prints the accuracy of the model on the testing set for each value of C. The regularization parameter controls the trade-off between maximizing the margin and minimizing the training error. Larger values of C correspond to a smaller margin and a higher training error, while smaller values of C correspond to a larger margin and a lower training error."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f123628f-62f3-4122-99de-c4ad526ed9d9",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4721fba6-6542-4518-a5a3-ad71c3754702",
+   "metadata": {},
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
